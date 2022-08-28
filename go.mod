@@ -1,1 +1,1 @@
-module github.com/hhk7734/gorm-uuid
+module github.com/hhk7734/uuid/v2
