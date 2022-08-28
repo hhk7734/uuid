@@ -5,6 +5,7 @@
 package uuid
 
 import (
+	"bytes"
 	"strings"
 	"testing"
 )
@@ -104,10 +105,10 @@ func TestScan(t *testing.T) {
 }
 
 func TestValue(t *testing.T) {
-	stringTest := "f47ac10b-58cc-0372-8567-0e02b2c3d479"
-	uuid := Must(Parse(stringTest))
+	byteTest := []byte{244, 122, 193, 11, 88, 204, 3, 114, 133, 103, 14, 2, 178, 195, 212, 121}
+	uuid := Must(FromBytes(byteTest))
 	val, _ := uuid.Value()
-	if val != stringTest {
+	if !bytes.Equal(val.([]byte), byteTest) {
 		t.Error("Value() did not return expected string")
 	}
 }
